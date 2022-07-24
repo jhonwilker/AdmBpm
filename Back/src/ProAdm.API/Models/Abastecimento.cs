@@ -7,6 +7,7 @@ namespace ProAdm.API.Models
 {
     public class Abastecimento
     {
+        public int AbastecimentoId { get; set; } 
         public int Viatura { get; set; }
         public int KmViatura { get; set; }
         public int Litros { get; set; }

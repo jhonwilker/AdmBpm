@@ -7,8 +7,9 @@ namespace ProAdm.API.Models
 {
     public class Policial
     {
-      public string Nome { get; set; }  
       public int PolicialId { get; set; }
+      public string Nome { get; set; } 
       public string PostoGraduacao { get; set; }
+        
     }
 }
