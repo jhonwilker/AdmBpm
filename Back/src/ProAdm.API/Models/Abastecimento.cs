@@ -8,14 +8,14 @@ namespace ProAdm.API.Models
     public class Abastecimento
     {
         public int AbastecimentoId { get; set; } 
-        public int Viatura { get; set; }
-        public int KmViatura { get; set; }
-        public int Litros { get; set; }
-        public int Valor { get; set; }
-        public DateTime Data { get; set; }
-        public int Responsavel { get; set; }
+        public Viatura Viatura { get; set; }
+        public int KmAbastecimento { get; set; }
+        public float LitrosAbastecimento { get; set; }
+        public float ValorAbastecimento { get; set; }
+        public DateTime DataAbastecimento { get; set; }
+        public Policial Responsavel { get; set; }
         public string Convenio { get; set; }
-        public int Saldo { get; set; }
+        public float Saldo { get; set; }
 
 
 

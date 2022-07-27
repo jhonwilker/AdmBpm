@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ProAdm.API.Data;
 using ProAdm.API.Models;
 
 namespace ProAdm.API.Controllers
@@ -12,37 +13,28 @@ namespace ProAdm.API.Controllers
     [Route("api/[controller]")]
     public class ViaturaController : ControllerBase
     {
-        public IEnumerable<Viatura> _viatura = new Viatura[] {
-
-            new Viatura()
-            {
-                ViaturaId = 1,
-                Prefixo = "VP-19-112",
-                Placa = "PTL8112"
-            },
-                new Viatura()
-            {
-                ViaturaId = 2,
-                Prefixo = "VP-21-043",
-                Placa = "PMT8114"
-            }
-        };
-
-        public ViaturaController()
+        public readonly DataContext _context;
+        
+        public ViaturaController(DataContext context)
         {
+            _context = context;
            
         }
+
+
 
         [HttpGet]
         public IEnumerable<Viatura> Get()
         {
-            return _viatura; 
+            return _context.Viaturas; 
         }
 
          [HttpGet("{id}")]
-        public IEnumerable<Viatura> Get(int id)
+        public Viatura GetById(int id)
         {
-            return _viatura.Where(viatura => viatura.ViaturaId == id); 
+            return _context.Viaturas.FirstOrDefault(
+                viatura => viatura.ViaturaId == id
+                ); 
         }
     }
 }

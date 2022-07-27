@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ProAdm.API.Data;
 using ProAdm.API.Models;
 
 namespace ProAdm.API.Controllers
@@ -12,26 +13,26 @@ namespace ProAdm.API.Controllers
     [Route("api/[controller]")]
     public class AbastecimentoController : ControllerBase
     {
-        public IEnumerable<Abastecimento> _abastecimento = new Abastecimento[] {
+       
+        public readonly DataContext _context;
 
-        
-        };
-
-        public AbastecimentoController()
+        public AbastecimentoController(DataContext context)
         {
-           
+            _context = context;
         }
 
         [HttpGet]
         public IEnumerable<Abastecimento> Get()
         {
-            return _abastecimento; 
+            return _context.Abastecimentos; 
         }
 
          [HttpGet("{id}")]
-        public IEnumerable<Abastecimento> Get(int id)
+        public Abastecimento GetById(int id)
         {
-            return _abastecimento.Where(abastecimento => abastecimento.AbastecimentoId == id); 
+            return _context.Abastecimentos.FirstOrDefault(
+                abastecimento => abastecimento.AbastecimentoId == id
+            ); 
         }
     }
 }

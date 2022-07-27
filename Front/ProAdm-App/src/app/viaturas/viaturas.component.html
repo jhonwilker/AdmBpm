@@ -1,0 +1,21 @@
+<div>
+  <table border="1">
+  <tr>
+    <td><b>Id</b></td>
+    <td><b>Prefixo</b></td>
+    <td><b>Placa</b></td>
+    <td><b>Odometro</b></td>
+    <td><b>Tipo de Combustível</b></td>
+  </tr>
+    <tr *ngFor="let viatura of viaturas">
+      <td>{{viatura.viaturaId}}</td>
+      <td>{{viatura.prefixo}}</td>
+      <td>{{viatura.placa}}</td>
+      <td>{{viatura.odometro}}</td>
+      <td>{{viatura.tipoCombustivel}}</td>
+    </tr>
+  </table>
+</div>
+<br>
+
+

@@ -12,7 +12,7 @@ namespace ProAdm.API.Models
 
         public int Odometro { get; set; }
 
-        public string Combustivel { get; set; }
+        public string TipoCombustivel { get; set; }
         
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ProAdm.API.Data;
 using ProAdm.API.Models;
 
 namespace ProAdm.API.Controllers
@@ -12,26 +13,25 @@ namespace ProAdm.API.Controllers
     [Route("api/[controller]")]
     public class PolicialController : ControllerBase
     {
-        public IEnumerable<Policial> _policial = new Policial[] {
-
-            
-        };
-
-        public PolicialController()
+        private readonly DataContext _context;
+        
+        public PolicialController(DataContext context )
         {
-           
+            this._context = context;
         }
 
         [HttpGet]
         public IEnumerable<Policial> Get()
         {
-            return _policial; 
+            return _context.Policiais; 
         }
 
          [HttpGet("{id}")]
-        public IEnumerable<Policial> Get(int id)
+        public Policial Get(int id)
         {
-            return _policial.Where(policial => policial.PolicialId == id); 
+            return _context.Policiais.FirstOrDefault(
+                policial => policial.PolicialId == id
+                ); 
         }
     }
 }

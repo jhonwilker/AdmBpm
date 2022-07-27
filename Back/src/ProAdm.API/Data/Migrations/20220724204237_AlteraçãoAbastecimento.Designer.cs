@@ -9,8 +9,8 @@ using ProAdm.API.Data;
 namespace ProAdm.API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220719014746_Segundo")]
-    partial class Segundo
+    [Migration("20220724204237_AlteraçãoAbastecimento")]
+    partial class AlteraçãoAbastecimento
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,28 +27,32 @@ namespace ProAdm.API.Data.Migrations
                     b.Property<string>("Convenio")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Data")
+                    b.Property<DateTime>("DataAbastecimento")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("KmViatura")
+                    b.Property<int>("KmAbastecimento")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Litros")
+                    b.Property<float>("LitrosAbastecimento")
+                        .HasColumnType("REAL");
+
+                    b.Property<int?>("ResponsavelPolicialId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Responsavel")
-                        .HasColumnType("INTEGER");
+                    b.Property<float>("Saldo")
+                        .HasColumnType("REAL");
 
-                    b.Property<int>("Saldo")
-                        .HasColumnType("INTEGER");
+                    b.Property<float>("ValorAbastecimento")
+                        .HasColumnType("REAL");
 
-                    b.Property<int>("Valor")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Viatura")
+                    b.Property<int?>("ViaturaId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("AbastecimentoId");
+
+                    b.HasIndex("ResponsavelPolicialId");
+
+                    b.HasIndex("ViaturaId");
 
                     b.ToTable("Abastecimentos");
                 });
@@ -76,9 +80,6 @@ namespace ProAdm.API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Combustivel")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Odometro")
                         .HasColumnType("INTEGER");
 
@@ -88,9 +89,27 @@ namespace ProAdm.API.Data.Migrations
                     b.Property<string>("Prefixo")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("TipoCombustivel")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("ViaturaId");
 
                     b.ToTable("Viaturas");
+                });
+
+            modelBuilder.Entity("ProAdm.API.Models.Abastecimento", b =>
+                {
+                    b.HasOne("ProAdm.API.Models.Policial", "Responsavel")
+                        .WithMany()
+                        .HasForeignKey("ResponsavelPolicialId");
+
+                    b.HasOne("ProAdm.API.Models.Viatura", "Viatura")
+                        .WithMany()
+                        .HasForeignKey("ViaturaId");
+
+                    b.Navigation("Responsavel");
+
+                    b.Navigation("Viatura");
                 });
 #pragma warning restore 612, 618
         }
