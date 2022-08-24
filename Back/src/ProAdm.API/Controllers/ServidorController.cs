@@ -4,33 +4,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProAdm.API.Data;
-using ProAdm.API.Models;
+using ProAdm.Persistence;
+using ProAdm.Domain;
 
 namespace ProAdm.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PolicialController : ControllerBase
+    public class ServidorController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly ProAdmContext _context;
         
-        public PolicialController(DataContext context )
+        public ServidorController(ProAdmContext context )
         {
             this._context = context;
         }
 
         [HttpGet]
-        public IEnumerable<Policial> Get()
+        public IEnumerable<Servidor> Get()
         {
-            return _context.Policiais; 
+            return _context.Servidores; 
         }
 
          [HttpGet("{id}")]
-        public Policial Get(int id)
+        public Servidor Get(int id)
         {
-            return _context.Policiais.FirstOrDefault(
-                policial => policial.PolicialId == id
+            return _context.Servidores.FirstOrDefault(
+                servidor => servidor.Id == id
                 ); 
         }
     }

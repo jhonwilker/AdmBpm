@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProAdm.API.Data;
-using ProAdm.API.Models;
+using ProAdm.Persistence;
+using ProAdm.Domain;
 
 namespace ProAdm.API.Controllers
 {
@@ -14,9 +14,10 @@ namespace ProAdm.API.Controllers
     public class AbastecimentoController : ControllerBase
     {
        
-        public readonly DataContext _context;
+        public readonly ProAdmContext _context;
 
-        public AbastecimentoController(DataContext context)
+
+        public AbastecimentoController(ProAdmContext context)
         {
             _context = context;
         }
@@ -30,8 +31,9 @@ namespace ProAdm.API.Controllers
          [HttpGet("{id}")]
         public Abastecimento GetById(int id)
         {
+               
             return _context.Abastecimentos.FirstOrDefault(
-                abastecimento => abastecimento.AbastecimentoId == id
+                abastecimento => abastecimento.Id == id
             ); 
         }
     }

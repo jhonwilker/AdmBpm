@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProAdm.API.Data;
-using ProAdm.API.Models;
+using ProAdm.Persistence;
+using ProAdm.Domain;
 
 namespace ProAdm.API.Controllers
 {
@@ -13,9 +13,9 @@ namespace ProAdm.API.Controllers
     [Route("api/[controller]")]
     public class ViaturaController : ControllerBase
     {
-        public readonly DataContext _context;
+        public readonly ProAdmContext _context;
         
-        public ViaturaController(DataContext context)
+        public ViaturaController(ProAdmContext context)
         {
             _context = context;
            
@@ -33,7 +33,7 @@ namespace ProAdm.API.Controllers
         public Viatura GetById(int id)
         {
             return _context.Viaturas.FirstOrDefault(
-                viatura => viatura.ViaturaId == id
+                viatura => viatura.Id == id
                 ); 
         }
     }
