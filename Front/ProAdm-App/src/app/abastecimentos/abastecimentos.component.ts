@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AbastecimentosComponent implements OnInit {
 
-  constructor() { }
+  public abastecimentos :any = [];
+
+  constructor(private http:HttpClient) {
+
+   }
 
   ngOnInit() {
+    this.getAbastecimentos();
   }
 
+  public getAbastecimentos():void {
+
+    this.http.get('https://localhost:5001/api/Abastecimento').subscribe(
+      response => this.abastecimentos = response,
+      error => console.log(error)
+    );
+
+  }
 }

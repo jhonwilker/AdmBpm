@@ -20,7 +20,8 @@ export class ViaturasComponent implements OnInit {
   public getViaturas():void {
 
     this.http.get('https://localhost:5001/api/Viatura').subscribe(
-      response => this.viaturas = response, error => console.log(error)
+      response => this.viaturas = response,
+      error => console.log(error)
     );
 
   }

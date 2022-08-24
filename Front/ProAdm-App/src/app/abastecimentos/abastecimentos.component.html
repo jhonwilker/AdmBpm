@@ -1,6 +1,46 @@
-<p><b>Id:</b></p>
-<p><b>Data:</b></p>
-<p><b>Responsavel:</b></p>
-<p><b>Viatura:</b></p>
-<p><b>Litros:</b></p>
-<p><b>Valor:</b></p>
+<hr>
+<!--
+
+  <form action="" class="form-inline" >
+    <div class="row mb-2 col-12">
+      <input type="text" class="form-control  mr-2 col-5" placeholder="Buscar">
+      <button class="btn btn-outline-success col-2">Buscar</button>
+    </div>
+  </form>
+
+-->
+
+<hr>
+<table class="table table-striped" >
+  <thead class="thead-dark" align="center">
+    <tr>
+      <th>#</th>
+      <th>ID</th>
+      <th>DATA</th>
+      <th>VIATURA</th>
+      <th>QUANTIDADE(L)</th>
+      <th>VALOR</th>
+      <th>CONVÊNIO</th>
+      <th>RESPONSÁVEL</th>
+    </tr>
+  </thead>
+  <tbody align="center">
+    <tr *ngFor="let abastecimento of abastecimentos">
+      <td></td>
+      <td>{{abastecimento.abastecimentoId}}</td>
+      <td>{{abastecimento.dataAbastecimento}}</td>
+      <td>{{abastecimento.viatura}}</td>
+      <td>{{abastecimento.litrosAbastecimento}}</td>
+      <td>{{abastecimento.valorAbastecimento}}</td>
+      <td>{{abastecimento.convenio}}</td>
+      <td>{{abastecimento.responsavel}}</td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!abastecimentos.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>Nenhum dado encontrado!</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
