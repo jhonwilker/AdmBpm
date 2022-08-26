@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using ProAdm.Persistence;
 using ProAdm.Domain;
+using ProAdm.Persistence.Contexts;
 
 namespace ProAdm.API.Controllers
 {

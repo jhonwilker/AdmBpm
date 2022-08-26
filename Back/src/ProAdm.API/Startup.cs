@@ -12,7 +12,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ProAdm.Application;
+using ProAdm.Application.Constracts;
 using ProAdm.Persistence;
+using ProAdm.Persistence.Contexts;
+using ProAdm.Persistence.Contracts;
 
 namespace ProAdm.API
 {
@@ -32,6 +36,16 @@ namespace ProAdm.API
                context => context.UseSqlite(Configuration.GetConnectionString("Default"))  
             );
             services.AddControllers();
+            services.AddScoped<IAbastecimentoService,AbastecimentoService>();
+            services.AddScoped<IAbastecimentoPersist,AbastecimentoPersist>();
+
+            services.AddScoped<IViaturaService,ViaturaService>();
+            services.AddScoped<IViaturaPersist,ViaturaPersist>();
+
+            services.AddScoped<IServidorService,ServidorService>();
+            services.AddScoped<IServidorPersist,ServidorPersist>();
+
+            services.AddScoped<IGeneralPersist,GeneralPersist>();
             services.AddCors();
             services.AddSwaggerGen(c =>
             {
