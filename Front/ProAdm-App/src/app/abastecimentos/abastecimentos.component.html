@@ -14,26 +14,30 @@
 <table class="table table-striped" >
   <thead class="thead-dark" align="center">
     <tr>
-      <th>#</th>
+
       <th>ID</th>
       <th>DATA</th>
       <th>VIATURA</th>
       <th>QUANTIDADE(L)</th>
       <th>VALOR</th>
       <th>CONVÊNIO</th>
+      <th>SALDO</th>
       <th>RESPONSÁVEL</th>
+      <th>#</th>
     </tr>
   </thead>
   <tbody align="center">
     <tr *ngFor="let abastecimento of abastecimentos">
-      <td></td>
-      <td>{{abastecimento.abastecimentoId}}</td>
-      <td>{{abastecimento.dataAbastecimento}}</td>
-      <td>{{abastecimento.viatura}}</td>
+
+      <td>{{abastecimento.id}}</td>
+      <td>{{abastecimento.dataAbastecimento|DateFormatPipe}}</td>
+      <td>{{abastecimento.viatura.prefixo}}</td>
       <td>{{abastecimento.litrosAbastecimento}}</td>
       <td>{{abastecimento.valorAbastecimento}}</td>
       <td>{{abastecimento.convenio}}</td>
-      <td>{{abastecimento.responsavel}}</td>
+      <td>{{abastecimento.saldo}}</td>
+      <td>{{abastecimento.responsavel.nome}}</td>
+      <td></td>
     </tr>
   </tbody>
   <tfoot *ngIf="!abastecimentos.length">

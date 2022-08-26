@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CollapseModule} from 'ngx-bootstrap/collapse'
 import { NavComponent } from './nav/nav.component';
+import { AbastecimentoService } from './services/abastecimento.service';
+import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { NavComponent } from './nav/nav.component';
       ViaturasComponent,
       PoliciaisComponent,
       AbastecimentosComponent,
-      NavComponent
+      NavComponent,
+      DateTimeFormatPipe
    ],
   imports: [
     BrowserModule,
@@ -26,7 +29,9 @@ import { NavComponent } from './nav/nav.component';
     BrowserAnimationsModule,
     CollapseModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AbastecimentoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

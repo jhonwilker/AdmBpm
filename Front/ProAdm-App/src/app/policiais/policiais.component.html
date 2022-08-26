@@ -12,21 +12,23 @@
 <table class="table table-striped" >
   <thead class="thead-dark" align="center">
     <tr>
-      <th>#</th>
+
       <th>ID</th>
       <th>POSTO/GRAD.</th>
       <th>NOME</th>
+      <th>#</th>
     </tr>
   </thead>
   <tbody align="center">
     <tr *ngFor="let policial of policiais">
-      <td></td>
-      <td>{{policial.policialId}}</td>
+
+      <td>{{policial.id}}</td>
       <td>{{policial.postoGraduacao}}</td>
       <td>{{policial.nome}}</td>
+      <td></td>
     </tr>
   </tbody>
-  <tfoot *ngIf="!policiais.length">
+   <tfoot *ngIf="!policiais.length">
     <tr>
       <td colspan="8" class="text-center">
         <h4>Nenhum dado encontrado!</h4>

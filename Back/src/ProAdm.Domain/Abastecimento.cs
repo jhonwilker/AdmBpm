@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,8 +17,6 @@ namespace ProAdm.Domain
         public Servidor Responsavel { get; set; }
         public string Convenio { get; set; }
         public float Saldo { get; set; }
-
-
 
     }
 }

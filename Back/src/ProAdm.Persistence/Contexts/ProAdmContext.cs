@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProAdm.Domain;
 
-namespace ProAdm.Persistence
+namespace ProAdm.Persistence.Contexts
 {
     public class ProAdmContext:DbContext
     {

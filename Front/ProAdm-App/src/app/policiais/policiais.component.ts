@@ -20,7 +20,7 @@ export class PoliciaisComponent implements OnInit {
 
   public getPoliciais():void {
 
-    this.http.get('https://localhost:5001/api/Policial').subscribe(
+    this.http.get('https://localhost:5001/api/Servidor').subscribe(
       response => this.policiais = response,
       error => console.log(error)
     );

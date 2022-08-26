@@ -5,11 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProAdm.Persistence;
+using ProAdm.Persistence.Contexts;
 
 namespace ProAdm.Persistence.Migrations
 {
     [DbContext(typeof(ProAdmContext))]
-    [Migration("20220824021901_Initial")]
+    [Migration("20220826013511_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

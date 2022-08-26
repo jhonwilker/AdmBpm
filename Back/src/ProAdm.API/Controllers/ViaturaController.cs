@@ -18,8 +18,6 @@ namespace ProAdm.API.Controllers
            
         }
 
-
-
         [HttpGet]
         public IEnumerable<Viatura> Get()
         {

@@ -12,22 +12,24 @@
 <table class="table table-striped" >
   <thead class="thead-dark" align="center">
     <tr>
-      <th>#</th>
+
       <th>ID</th>
       <th>PREFIXO</th>
       <th>PLACA</th>
       <th>ODOMETRO</th>
       <th>TIPO COMBUSTÍVEL</th>
+      <th>#</th>
     </tr>
   </thead>
   <tbody align="center">
     <tr *ngFor="let viatura of viaturas">
-      <td></td>
-      <td>{{viatura.viaturaId}}</td>
+
+      <td>{{viatura.id}}</td>
       <td>{{viatura.prefixo}}</td>
       <td>{{viatura.placa}}</td>
       <td>{{viatura.odometro}}</td>
       <td>{{viatura.tipoCombustivel}}</td>
+      <td></td>
     </tr>
   </tbody>
   <tfoot *ngIf="!viaturas.length">
@@ -38,5 +40,3 @@
 </table>
 
 
-
-<!--{{viatura.viaturaId}}< -->

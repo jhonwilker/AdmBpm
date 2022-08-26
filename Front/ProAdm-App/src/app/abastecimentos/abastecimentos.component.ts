@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
+import { Abastecimento } from '../models/Abastecimento';
+import { AbastecimentoService } from '../services/abastecimento.service';
 
 @Component({
   selector: 'app-abastecimentos',
@@ -8,22 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AbastecimentosComponent implements OnInit {
 
-  public abastecimentos :any = [];
+  public abastecimentos : Abastecimento[] = [];
+  //public abastecimento  : Abastecimento;
 
-  constructor(private http:HttpClient) {
+  constructor(private abastecimentoService:AbastecimentoService) {
 
    }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.getAbastecimentos();
   }
 
   public getAbastecimentos():void {
 
-    this.http.get('https://localhost:5001/api/Abastecimento').subscribe(
-      response => this.abastecimentos = response,
+    this.abastecimentoService.getAbastecimentos().subscribe(
+      
+      (_abastecimentos:Abastecimento[]) => {
+        this.abastecimentos = _abastecimentos;
+      },
       error => console.log(error)
     );
 
   }
+
+  // public getAbastecimento(id: number):void {
+
+  //   this.abastecimentoService.getAbastecimentoById(id).subscribe(
+  //     response => this.abastecimento = response,
+  //     error => console.log(error)
+  //   );
+
+  // }
 }
