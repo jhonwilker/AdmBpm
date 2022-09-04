@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Servidor } from '../models/Servidor';
+import { ServidorService } from '../services/servidor.service';
 
 @Component({
   selector: 'app-policiais',
@@ -8,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PoliciaisComponent implements OnInit {
 
-  public policiais :any;
+  public policiais : Servidor[] = [];
 
-  constructor(private http:HttpClient) {
+  constructor(private servidorService:ServidorService) {
 
    }
 
@@ -20,8 +22,11 @@ export class PoliciaisComponent implements OnInit {
 
   public getPoliciais():void {
 
-    this.http.get('https://localhost:5001/api/Servidor').subscribe(
-      response => this.policiais = response,
+    this.servidorService.getServidores().subscribe(
+
+      (_servidores:Servidor[]) => {
+        this.policiais = _servidores;
+      },
       error => console.log(error)
     );
 

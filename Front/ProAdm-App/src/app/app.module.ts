@@ -12,6 +12,7 @@ import {CollapseModule} from 'ngx-bootstrap/collapse'
 import { NavComponent } from './nav/nav.component';
 import { AbastecimentoService } from './services/abastecimento.service';
 import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
       PoliciaisComponent,
       AbastecimentosComponent,
       NavComponent,
-      DateTimeFormatPipe
+      DateTimeFormatPipe,
+      HomeComponent
    ],
   imports: [
     BrowserModule,
